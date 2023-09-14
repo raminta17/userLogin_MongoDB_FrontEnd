@@ -63,9 +63,7 @@ const Form = ({page}) => {
             const res = await fetch('http://localhost:8000/login', options);
             const data = await res.json();
             setError(data.message);
-            console.log('data', data);
             if(!data.error) {
-                console.log('i am inside if data error false')
                 dispatch(updateLoggedInUser(data.data));
                 usernameRef.current.value = '';
                 passRef.current.value = '';

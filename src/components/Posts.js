@@ -11,7 +11,6 @@ const Posts = () => {
     const imageRef = useRef();
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.user.loggedInUser);
-    console.log(loggedInUser);
 
     async function savePost() {
         const post = {
@@ -28,7 +27,6 @@ const Posts = () => {
         }
         const res = await fetch('http://localhost:8000/savePost',options);
         const data = await res.json();
-        console.log(data);
         dispatch(updateLoggedInUser(data.data));
         titleRef.current.value = '';
         imageRef.current.value = '';
@@ -44,7 +42,7 @@ const Posts = () => {
                     <button onClick={savePost}>POST</button>
                 </div>
                 {loggedInUser.posts && <div className="posts">
-                    {loggedInUser.posts.map(post => <SinglePost key={loggedInUser._id} author={loggedInUser.username} post={post}/>)}
+                    {loggedInUser.posts.map((post,index) => <SinglePost key={index} loggedInUser={loggedInUser} post={post}/>)}
                 </div>}
             </div>}
         </>

@@ -7,7 +7,6 @@ import {useNavigate} from "react-router-dom";
 const UserUpdateCard = () => {
 
     const loggedInUser = useSelector(state => state.user.loggedInUser);
-    console.log(loggedInUser);
     const updatePhotoRef = useRef();
     const dispatch = useDispatch();
     const nav = useNavigate();
@@ -42,7 +41,7 @@ const UserUpdateCard = () => {
                 </div>
                 :
                 <div className="box">
-                    <h2>NO USER IS LOGGED IN</h2>
+                    <h2>PLEASE LOGIN TO ACCESS YOUR ACCOUNT</h2>
                     <button onClick={() => nav("/login")}>GO TO LOGIN</button>
                 </div>}
         </>
