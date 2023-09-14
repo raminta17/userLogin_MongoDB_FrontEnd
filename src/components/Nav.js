@@ -16,19 +16,19 @@ const Nav = () => {
         <>
             <div className="nav">
                 <div className="navLeft">
-                    <NavLink className="link" to='/login'>
+                    <NavLink to='/login' className='link' >
                         <div>LOGIN</div>
                     </NavLink>
-                    <NavLink className="link" to='/'>
+                    <NavLink className='link' to='/' >
                         <div>REGISTRATION</div>
                     </NavLink>
-                    <NavLink className="link" to='/user'>
+                    <NavLink className="link" to='/user' >
                         <div>ACCOUNT</div>
                     </NavLink>
                 </div>
                 <div className="navRight">
                     {loggedInUser &&
-                        <NavLink className="link" to='/login'>
+                        <NavLink className="link" to='/login' >
                             <div onClick={handleLogOut}>LOG OUT</div>
                         </NavLink>}
 

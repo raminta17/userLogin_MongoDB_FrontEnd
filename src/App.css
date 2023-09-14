@@ -39,6 +39,9 @@ body {
     border-bottom: 2px solid grey;
     color: grey;
 }
+.active {
+    border-bottom: 2px solid grey;
+}
 .page {
     display: flex;
     justify-content: center;
