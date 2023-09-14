@@ -87,13 +87,13 @@ img {
 .postsCont {
     height: 80vh;
     width: 50vw;
+    text-align: left;
 }
 .posts {
     overflow: auto;
     display: flex;
     flex-wrap: wrap;
     gap:10px;
-    margin-top: 20px;
 }
 .singlePost {
     border:1px solid lightgrey;
