@@ -11,6 +11,7 @@ const Nav = () => {
     function handleLogOut() {
         dispatch(updateLoggedInUser(null))
         localStorage.removeItem('TOKEN');
+        localStorage.removeItem('agreement');
     }
 
     return (

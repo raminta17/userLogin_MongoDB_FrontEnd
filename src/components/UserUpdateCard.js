@@ -1,12 +1,14 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useRef} from "react";
+import {useRef,useState} from "react";
 import {updateLoggedInUser} from "../features/user";
 import {useNavigate} from "react-router-dom";
 
 const UserUpdateCard = () => {
 
     const loggedInUser = useSelector(state => state.user.loggedInUser);
+    const [ifAgree, setIfAgree] = useState(JSON.parse(localStorage.getItem('agreement')));
+    console.log(ifAgree);
     const updatePhotoRef = useRef();
     const dispatch = useDispatch();
     const nav = useNavigate();
@@ -28,6 +30,10 @@ const UserUpdateCard = () => {
         console.log(data);
         dispatch(updateLoggedInUser(data.data))
     }
+    function handleAgreement(event) {
+        localStorage.setItem('agreement', event.target.checked);
+        setIfAgree(event.target.checked)
+    }
 
     return (
         <>
@@ -38,6 +44,8 @@ const UserUpdateCard = () => {
                         <h1>Welcome {loggedInUser.username}!</h1>
                     </div>
                     <input type="text" ref={updatePhotoRef} defaultValue={loggedInUser.photo}/>
+                    <label htmlFor="stay">Stay logged in?</label>
+                    <input onChange={handleAgreement} id="stay" type="checkbox" defaultChecked={ifAgree} />
                     <button onClick={updatePhoto}>UPDATE PHOTO</button>
                 </div>
                 :
