@@ -65,6 +65,7 @@ const Form = ({page}) => {
             setError(data.message);
             if(!data.error) {
                 dispatch(updateLoggedInUser(data.data));
+                localStorage.setItem('TOKEN', data.token)
                 usernameRef.current.value = '';
                 passRef.current.value = '';
                 setError();

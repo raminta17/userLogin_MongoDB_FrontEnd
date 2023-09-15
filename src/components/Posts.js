@@ -11,23 +11,24 @@ const Posts = () => {
     const imageRef = useRef();
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.user.loggedInUser);
-const [error, setError] = useState();
+    const [error, setError] = useState();
+
     async function savePost() {
         const post = {
-            id: loggedInUser._id,
             title: titleRef.current.value,
             postImage: imageRef.current.value
         }
         const options = {
             method: 'POST',
             headers: {
-                "content-type":"application/json"
+                "content-type": "application/json",
+                "authorization": localStorage.getItem('TOKEN')
             },
             body: JSON.stringify(post)
         }
-        const res = await fetch('http://localhost:8000/savePost',options);
+        const res = await fetch('http://localhost:8000/savePost', options);
         const data = await res.json();
-        if(data.error) return setError(data.message);
+        if (data.error) return setError(data.message);
         dispatch(updateLoggedInUser(data.data));
         titleRef.current.value = '';
         imageRef.current.value = '';
@@ -45,12 +46,11 @@ const [error, setError] = useState();
                 </div>
                 <div className="error">{error}</div>
                 {loggedInUser.posts && <div className="posts">
-                    {loggedInUser.posts.map((post,index) => <SinglePost key={index} loggedInUser={loggedInUser} post={post}/>)}
+                    {loggedInUser.posts.map((post, index) => <SinglePost key={index} loggedInUser={loggedInUser}
+                                                                         post={post}/>)}
                 </div>}
             </div>}
         </>
-
-
     );
 };
 

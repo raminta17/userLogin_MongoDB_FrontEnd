@@ -10,6 +10,7 @@ const Nav = () => {
 
     function handleLogOut() {
         dispatch(updateLoggedInUser(null))
+        localStorage.removeItem('TOKEN');
     }
 
     return (

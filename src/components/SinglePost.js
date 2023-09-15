@@ -8,13 +8,13 @@ const SinglePost = ({post, loggedInUser}) => {
 
     async function deletePost() {
         const postToDelete = {
-            id: loggedInUser._id,
             title : post.title
         }
         const options = {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "authorization": localStorage.getItem('TOKEN')
             },
             body: JSON.stringify(postToDelete)
         }

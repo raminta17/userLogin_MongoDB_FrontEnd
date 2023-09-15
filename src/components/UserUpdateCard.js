@@ -13,18 +13,19 @@ const UserUpdateCard = () => {
 
     async function updatePhoto() {
         const user = {
-            id: loggedInUser._id,
             photo: updatePhotoRef.current.value
         }
         const options = {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "authorization": localStorage.getItem('TOKEN')
             },
             body: JSON.stringify(user)
         }
         const res = await fetch('http://localhost:8000/updatePhoto', options);
         const data = await res.json();
+        console.log(data);
         dispatch(updateLoggedInUser(data.data))
     }
 
