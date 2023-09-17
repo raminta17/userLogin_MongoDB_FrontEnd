@@ -46,8 +46,12 @@ const Posts = () => {
                 </div>
                 <div className="error">{error}</div>
                 {loggedInUser.posts && <div className="posts">
-                    {loggedInUser.posts.map((post, index) => <SinglePost key={index} loggedInUser={loggedInUser}
-                                                                         post={post}/>)}
+                    {loggedInUser.posts.map((post, index) =>
+                        <SinglePost
+                            key={index}
+                            loggedInUser={loggedInUser}
+                            post={post}
+                            />)}
                 </div>}
             </div>}
         </>

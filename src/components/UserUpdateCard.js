@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 const UserUpdateCard = () => {
 
     const loggedInUser = useSelector(state => state.user.loggedInUser);
-    const [ifAgree, setIfAgree] = useState(JSON.parse(localStorage.getItem('agreement')));
+    const [ifAgree, setIfAgree] = useState(JSON.parse(localStorage.getItem('auto-save')));
     console.log(ifAgree);
     const updatePhotoRef = useRef();
     const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const UserUpdateCard = () => {
         dispatch(updateLoggedInUser(data.data))
     }
     function handleAgreement(event) {
-        localStorage.setItem('agreement', event.target.checked);
+        localStorage.setItem('auto-save', event.target.checked);
         setIfAgree(event.target.checked)
     }
 

@@ -10,9 +10,7 @@ const UserPage = () => {
 
     const dispatch = useDispatch();
     const loggedInUser = useSelector(state=>state.user.loggedInUser);
-    console.log(loggedInUser);
-   const ifAgree = localStorage.getItem('agreement');
-    console.log(typeof  ifAgree);
+   const ifAgree = localStorage.getItem('auto-save');
 
     useEffect(() => {
         const options = {
@@ -30,7 +28,6 @@ const UserPage = () => {
     return (
         <div className="userPage">
             {ifAgree==='false' && loggedInUser && <AlertMessage/>}
-        {/*<AlertMessage/>*/}
             <UserUpdateCard/>
             <Posts />
         </div>

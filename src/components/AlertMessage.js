@@ -6,7 +6,7 @@ const AlertMessage = () => {
     const[modalVisibility, setModalVisibility] = useState('block');
 
     function handleAgreement(event) {
-        localStorage.setItem('agreement', event.target.checked)
+        localStorage.setItem('auto-save', event.target.checked)
     }
 
 

@@ -66,7 +66,7 @@ const Form = ({page}) => {
             if(!data.error) {
                 dispatch(updateLoggedInUser(data.data));
                 localStorage.setItem('TOKEN', data.token);
-                localStorage.setItem('agreement', false);
+                localStorage.setItem('auto-save', false);
                 usernameRef.current.value = '';
                 passRef.current.value = '';
                 setError();
